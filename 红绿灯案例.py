@@ -10,6 +10,7 @@ data = {
 df = pd.DataFrame(data)
 print(df.head())
 
+# 根据车辆数量来调整信号灯时常，如一个方向车辆较多，则延长该方向的绿灯时常
 def adjust_signal_duration(north_south_count, east_west_count):
     base_duration = 30  # 基础时长为30秒
     if north_south_count > east_west_count:
@@ -26,6 +27,7 @@ east_west_count = df['east_west'].iloc[0]
 north_south_duration, east_west_duration = adjust_signal_duration(north_south_count, east_west_count)
 print(f"北南方向绿灯时长: {north_south_duration} 秒, 东西方向绿灯时长: {east_west_duration} 秒")
 
+# 模拟一段时间内的运行情况，并记录每次调整信号灯的时长
 signal_durations = []
 
 for index, row in df.iterrows():
